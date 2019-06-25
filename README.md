@@ -1,2 +1,1 @@
-# ctweek1day2
-Career Track Week 1 Day 2-- file systems
+Lab assignment for week 1 day 2 of career track
