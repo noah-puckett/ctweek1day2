@@ -1,0 +1,24 @@
+{
+  "name": "ctweek1day2",
+  "version": "1.0.0",
+  "description": "Career Track Week 1 Day 2-- file systems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noah-puckett/ctweek1day2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noah-puckett/ctweek1day2/issues"
+  },
+  "homepage": "https://github.com/noah-puckett/ctweek1day2#readme",
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "jest": "^24.8.0"
+  }
+}
