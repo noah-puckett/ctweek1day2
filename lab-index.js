@@ -26,7 +26,7 @@ const fs = require('fs');
 //add more things to the file name, last modified, file number, etc.
 //commit, test
 
-//below you can see that you can INTERPOLATE values in a path name, which will 
+//you can INTERPOLATE values in a path name, which will 
 //come in handy eventually
 
 // const testVar = 'users';
@@ -38,22 +38,44 @@ const directoryPath = path.join(__dirname, 'friend-files');
 
 fs.readdir(directoryPath, function(err, files) {
     if(err) {
-        return console.log('something in your loop broke?', err);
+        return console.log(err);
     }
+
+
+    const testArray = [];
 
     files.forEach((file) => {
         fs.readFile('./friend-files/' + file, { encoding: 'utf8' }, (err, content) => {
             if(err) {
-                return console.log(err, 'something in your read file loop broke');
+                return console.log(err);
             }
-            console.log(content);
 
-            fs.writeFile('./friend-files/' + content, content, err => {
-                if(err) {
-                    return console.error(err);
-                }
-                console.log(content);
-            });
+            testArray.push(file);
         });
     });
+
+    setTimeout(() => {
+        console.log(testArray);
+
+        for(let i = 0; i < testArray.length; i++) {
+            
+        }
+
+    }, 6000);
 });
+
+//these do the same thing: rename only unique content, fml
+
+// fs.writeFile('./friend-files/' + content, content, err => {
+//     if(err) {
+//         return console.error(err);
+//     }
+//     console.log(content);
+// });
+
+// fs.rename('./friend-files/' + file, './friend-files' + content, (err) => {
+//     if(err) {
+//         console.error(err);
+//     }
+// });
+
