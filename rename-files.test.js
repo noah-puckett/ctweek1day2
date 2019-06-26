@@ -55,4 +55,14 @@ describe('renames files', () => {
             expect(modifiedTime).toEqual(expect.any(String));
         });
     });
+
+    it('gets the contents of a file', done => {
+        fs.readFile('0.txt', { encoding: 'utf8' }, (err, expectedContent) => {
+            readfile('./fixtures/0.txt', (err, resultContent) => {
+                expect(err).toBeFalsy();
+                expect(resultContent).toEqual(expectedContent)
+            }
+        });
+    });
+
 });

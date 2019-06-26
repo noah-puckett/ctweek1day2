@@ -1,16 +1,11 @@
 const fs = require('fs');
 
 function readDirectory(directory, callback) {
-    fs.readdir(directory, (err, files) => {
-        callback(err, files);
-
-    });
+    fs.readdir(directory, callback);
 }
 
 function rename(path, newPath, callback) {
-    fs.rename(path, newPath, err => {
-        callback(err);
-    });
+    fs.rename(path, newPath, callback);
 }
 
 function getModifiedTime(path, callback) {
@@ -21,4 +16,8 @@ function getModifiedTime(path, callback) {
     });
 }
 
-module.exports = { readDirectory, rename, getModifiedTime };
+function readFile(path, callback) {
+    fs.readfile(path, { encoding: 'utf8' }, callback);
+}
+
+module.exports = { readDirectory, rename, getModifiedTime, readFile };
