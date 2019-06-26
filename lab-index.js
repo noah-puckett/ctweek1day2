@@ -48,7 +48,7 @@ fs.readdir(directoryPath, function(err, files) {
             }
             console.log(content);
 
-            fs.writeFile('./friend-files/' + content, (err, content) => {
+            fs.writeFile('./friend-files/' + content, content, err => {
                 if(err) {
                     return console.error(err);
                 }
