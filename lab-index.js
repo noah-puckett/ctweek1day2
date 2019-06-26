@@ -1,5 +1,5 @@
 //import your stuff
-
+const path = require('path');
 const fs = require('fs');
 
 //created 100 files that have unique groupings of words in them
@@ -24,3 +24,21 @@ const fs = require('fs');
 
 //add more things to the file name, last modified, file number, etc.
 //commit, test
+
+const directoryPath = path.join(__dirname, 'friend-files');
+
+fs.readdir(directoryPath, function(err, files) {
+    if(err) {
+        return console.log('something in your loop broke?', err);
+    }
+    console.log(files);
+
+    files.forEach((file) => {
+        fs.readFile('./friend-files/' + file, { encoding: 'utf8' }, (err, content) => {
+            if(err) {
+                return console.log(err, 'something in your read file loop broke');
+            }
+            console.log(content);
+        });
+    });
+});
