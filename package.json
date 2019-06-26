@@ -4,7 +4,8 @@
   "description": "Career Track Week 1 Day 2-- file systems",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
