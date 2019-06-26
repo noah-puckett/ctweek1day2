@@ -16,11 +16,8 @@ function rename(path, newPath, callback) {
 function getModifiedTime(path, callback) {
 
     fs.stat(path, (err, stats) => {
-        if(!stats) {
-            return callback(err);
-        }
-        
-        callback(err, stats.mtime.toISOString());
+        //if stats evals to falsy, run callback error, do not run the stats.mtime.toISOString
+        callback(err, stats && stats.mtime.toISOString());
     });
 }
 
