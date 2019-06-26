@@ -12,6 +12,10 @@ describe('renames files', () => {
         createFiles('./fixtures', 100, done);
     });
 
+    afterAll(done => {
+        fs.rmdir('./fixtures', done);
+    });
+
     afterEach(done => {
         fs.readdir('./fixtures', { encoding: 'utf8' }, (err, files) => {
             if(files.length === 0) done();
