@@ -9,47 +9,57 @@ describe('oh my god what am I DOING', () => {
 
         fs.readdir(directoryPath, function(err, files) {
             if(err) {
-                return console.log('fuuuuuck', err);
+                return console.log('something in your loop broke?', err);
             }
+            console.log(files);
 
-            files.forEach(function(file) {
-                console.log(file);
+            const testArray = [];
+        
+            files.forEach((file) => {
+                fs.readFile('./friend-files/' + file, { encoding: 'utf8' }, (err, content) => {
+                    if(err) {
+                        return console.log(err, 'something in your read file loop broke');
+                    }
+                    testArray.push(content);
+                    console.log(testArray);
+                });
             });
-
         });
 
-        expect(thing).toEqual('just print literally anything please');
+        expect(testArray).toEqual(99);
     }); 
 
 });
 
-const copy = require('./index');
-const fs = require('fs');
-const { join } = require('path');
+//reference code below:
 
-describe('function for copying files?', () => {
-    beforeEach(done => {
-        fs.writeFile(join(__dirname, 'test.txt'), 'line seven successful', done); 
-    });
+// const copy = require('./index');
+// const fs = require('fs');
+// const { join } = require('path');
+
+// describe('function for copying files?', () => {
+//     beforeEach(done => {
+//         fs.writeFile(join(__dirname, 'test.txt'), 'line seven successful', done); 
+//     });
     
-    afterEach(done => {
-        fs.unlink(join(__dirname, 'test.txt'), done);
-    });
+//     afterEach(done => {
+//         fs.unlink(join(__dirname, 'test.txt'), done);
+//     });
 
-    afterEach(done => {
-        fs.unlink(join(__dirname, 'test-copy.txt'), done);
-    });
+//     afterEach(done => {
+//         fs.unlink(join(__dirname, 'test-copy.txt'), done);
+//     });
 
-    it('copies a file I guess?', done => {
-        copy(join(__dirname, 'test.txt'), join(__dirname, 'test-copy.txt'), err => {
-            expect(err).toBeFalsy();
+//     it('copies a file I guess?', done => {
+//         copy(join(__dirname, 'test.txt'), join(__dirname, 'test-copy.txt'), err => {
+//             expect(err).toBeFalsy();
 
-            fs.readFile(join(__dirname, 'test-copy.txt'), { encoding: 'utf8' }, (err, content) => {
-                expect(content).toEqual('line seven successful');
-                done(err);
-            });
-        }); 
+//             fs.readFile(join(__dirname, 'test-copy.txt'), { encoding: 'utf8' }, (err, content) => {
+//                 expect(content).toEqual('line seven successful');
+//                 done(err);
+//             });
+//         }); 
         
-    });
-});
+//     });
+// });
 
