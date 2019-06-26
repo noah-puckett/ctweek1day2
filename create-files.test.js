@@ -1,13 +1,8 @@
 const fs = require('fs');
 const { getAnimal, createFiles } = require('./create-files');
-// const { join } = require('path');
 
 describe('create files', () => {
 
-    // beforeEach(done => {
-    //     fs.writeFile(join(__dirname, './copy-me.txt'), 'Copy Me', done);
-    // });
-    
     afterEach(done => {
         fs.readdir('./fixtures', { encoding: 'utf8' }, (err, files) => {
             if(files.length === 0) done();
@@ -27,7 +22,6 @@ describe('create files', () => {
     it('can get a random animal species', () => {
 
         const animal = getAnimal();
-
         expect(animal).toEqual(expect.any(String));
     }); 
 

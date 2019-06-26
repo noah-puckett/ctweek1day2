@@ -1,16 +1,9 @@
-const fs = require('fs');
+const { renameEverything } = require('./rename-files');
 
-fs.readFile('./README.md', { encoding: 'utf8' }, (err, data) => {
-    if(err) {
-        console.error(err);
-    }
-});
+const directory = process.argv[2];
 
-const data = 'YOU ARE SUCCESS';
-
-fs.writeFile('./hi.txt', data, (err) => {
-    if(err) {
-        console.error('YA FUCKED UP');
-    }
-    console.log('Ya done wrote it, kid!');
+//new code from Ryan
+renameEverything(directory, err => {
+    if(err) return console.error(err);
+    console.log('Your files have been renamed!');
 });

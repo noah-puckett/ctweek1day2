@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { createFiles } = require('./create-files');
-const { readDirectory, rename, getModifiedTime } = require('./rename-files');
+const { readDirectory, rename, getModifiedTime, readFile, renameEverything } = require('./rename-files');
 
 describe('renames files', () => {
     beforeEach(done => {
@@ -46,7 +46,6 @@ describe('renames files', () => {
         });
     });
 
-
     it('gets the last modified date of a file', () => {
 
         getModifiedTime('./fixtures/0.txt', (err, modifiedTime) => {
@@ -57,12 +56,24 @@ describe('renames files', () => {
     });
 
     it('gets the contents of a file', done => {
-        fs.readFile('0.txt', { encoding: 'utf8' }, (err, expectedContent) => {
-            readfile('./fixtures/0.txt', (err, resultContent) => {
+        fs.readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, expectedContent) => {
+            readFile('./fixtures/0.txt', (err, resultContent) => {
                 expect(err).toBeFalsy();
-                expect(resultContent).toEqual(expectedContent)
-            }
+                expect(resultContent).toEqual(expectedContent);
+                done();
+            });
         });
     });
 
+    it('renames all files in directory to content-fileNumber-date', done => {
+
+        renameEverything('./fixtures', err => {
+            expect(err).toBeFalsy();
+
+            fs.readdir('./fixtures', (err, files) => {
+                expect(files).toHaveLength(100);
+                done();
+            });
+        });
+    });
 });

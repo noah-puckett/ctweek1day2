@@ -18,7 +18,7 @@ Rename files based on file content, number in the file name, and date of last mo
 
 ~~1. Get the last modified date of a file
 
-1. Get content of a file
+~~1. Get content of a file
 
 1. Rename ALL files
 
