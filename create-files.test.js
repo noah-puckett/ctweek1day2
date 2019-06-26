@@ -3,6 +3,10 @@ const { getAnimal, createFiles } = require('./create-files');
 
 describe('create files', () => {
 
+    beforeAll(done => {
+        fs.mkdir('./fixtures', done);
+    });
+
     afterEach(done => {
         fs.readdir('./fixtures', { encoding: 'utf8' }, (err, files) => {
             if(files.length === 0) done();
