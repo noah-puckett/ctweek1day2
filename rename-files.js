@@ -13,4 +13,15 @@ function rename(path, newPath, callback) {
     });
 }
 
-module.exports = { readDirectory, rename };
+function getModifiedTime(path, callback) {
+
+    fs.stat(path, (err, stats) => {
+        if(!stats) {
+            return callback(err);
+        }
+        
+        callback(err, stats.mtime.toISOString());
+    });
+}
+
+module.exports = { readDirectory, rename, getModifiedTime };

@@ -4,7 +4,7 @@
   "description": "Career Track Week 1 Day 2-- file systems",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --runInBand",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
