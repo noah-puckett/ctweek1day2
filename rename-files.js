@@ -7,4 +7,10 @@ function readDirectory(directory, callback) {
     });
 }
 
-module.exports = { readDirectory };
+function rename(path, newPath, callback) {
+    fs.rename(path, newPath, err => {
+        callback(err);
+    });
+}
+
+module.exports = { readDirectory, rename };

@@ -8,9 +8,9 @@ Rename files based on file content, number in the file name, and date of last mo
 
 ## Steps
 
-1. Recreate problem locally
-    1. Get random word to add as content
-    1. Create files
+~~1. Recreate problem locally
+    ~~1. Get random word to add as content
+    ~~1. Create files
 
 1. Get all files in target directory
 
